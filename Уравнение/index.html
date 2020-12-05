@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function solve_eq(...args){
+            if (args.some(function(elem){ return isNaN(elem);})) throw new Error('Неверный ввод!');
+            else if (args.length == 2){
+                if (args[0] == 0) throw new Error('Попытка деления на 0!');
+                else return -args[1] / args[0];
+            }
+            else if (args.length == 3){
+                var D = Math.pow(args[1], 2) - 4 * args[0] * args[2];
+                if (D < 0 ) throw new Error('Корней нету!');
+                else if (D == 0) return -args[1] / 2 * args[0];
+                else {
+                    var result = [(-args[1] - Math.sqrt(D)) / 2 * args[0], (-args[1] + Math.sqrt(D)) / 2 * args[0]];
+                    return result;
+                }           
+            }
+            else throw new Error('Недопустимое кол-во аргументов');
+        }
+
+        try{
+            var n = +prompt('Введите кол-во коэффициентов: ');
+            if (isNaN(n)) throw new Error('Данные некоректны!');
+            else if (n == 2){
+                var a = +prompt('a:'), b = +prompt('b:');
+                alert(solve_eq(a,b));
+            }
+            else if (n == 3){
+                var a = +prompt('a:'), b = +prompt('b:'), c = +prompt('c:');
+                alert(solve_eq(a,b,c));
+            }
+        }
+        catch(ex){
+            alert(ex);
+        }
+    </script>
+</body>
+</html>

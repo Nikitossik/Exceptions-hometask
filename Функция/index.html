@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function solve(exp){
+            let res;
+            if ( !(/\^/).test(exp) ) res = eval(exp);
+            else{
+                var parts = exp.split('^');
+                res = eval('Math.pow(' + parts[0] + ', ' + parts[1] + ')');
+            }
+            return res;
+        }
+        
+        try{
+            var exp = prompt('Введите выражение');
+            alert(solve(exp));
+        }
+        catch(ex){
+            alert(ex);
+        }
+
+
+    </script>
+</body>
+</html>
